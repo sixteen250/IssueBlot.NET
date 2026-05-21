@@ -1,5 +1,4 @@
 ﻿using Azure.Storage.Queues;
-using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 using System;

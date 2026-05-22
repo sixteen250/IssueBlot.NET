@@ -13,25 +13,28 @@ namespace NETWebFormsBlot
         protected void Page_Load(object sender, EventArgs e)
         {
             String url = Request["redir"];
-            // CTSECISSUE:OpenRedirect
-            Response.Redirect(url);
+            if (!String.IsNullOrEmpty(url))
+            {
+                // CTSECISSUE:OpenRedirect
+                Response.Redirect(url);
 
-            // CTSECISSUE:OpenRedirectInternal
-            Response.Redirect(Request.Url.Authority + url);
+                // CTSECISSUE:OpenRedirectInternal
+                Response.Redirect(Request.Url.Authority + url);
+            }
 
             // sink: probably other *Decode methods provided by .NET Framework
 
-            HttpCookie aCookie = Request.Cookies["corss"];
+            string cookieValue = Request.Cookies["corss"]?.Value ?? "";
             // CTSECISSUE:PotentialUnsafeDecoding
-            string corss = Server.UrlDecode(aCookie.Value);
+            string corss = Server.UrlDecode(cookieValue);
             
             // CTSECISSUE:PotentialUnsafeDecoding
-            string corss2 = HttpUtility.UrlDecode(aCookie.Value);
+            string corss2 = HttpUtility.UrlDecode(cookieValue);
 
             // CTSECISSUE:PotentialUnsafeDecoding
-            string corss3 = WebUtility.UrlDecode(aCookie.Value);
+            string corss3 = WebUtility.UrlDecode(cookieValue);
 
-            string description = Request["desc"];
+            string description = Request["desc"] ?? "";
             
             // CTSECISSUE:PotentialUnsafeDecoding
             string decodedDescription = Server.HtmlDecode(description);
@@ -40,13 +43,13 @@ namespace NETWebFormsBlot
             string decodedDescription2 = HttpUtility.HtmlDecode(description);
 
             // CTSECISSUE:PotentialUnsafeDecoding
-            HttpUtility.HtmlDecode(description, null);
+            HttpUtility.HtmlDecode(description, System.IO.TextWriter.Null);
 
             // CTSECISSUE:PotentialUnsafeDecoding
             string decodedDescription3 = WebUtility.HtmlDecode(description);
 
             // CTSECISSUE:PotentialUnsafeDecoding
-            WebUtility.HtmlDecode(description, null);
+            WebUtility.HtmlDecode(description, System.IO.TextWriter.Null);
         }
     }
 }

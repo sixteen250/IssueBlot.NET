@@ -1,8 +1,8 @@
-﻿<!-- CTSECISSUE:DisabledRequestValidation -->
 <%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="NETWebFormsBlot._Default" ValidateRequest="false" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+    <!-- CTSECISSUE:DisabledRequestValidation -->
     <div class="jumbotron">
         <h1>ASP.NET</h1>
         <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
@@ -16,7 +16,7 @@
     <%= Request.QueryString["Address"] %>
 
     <!-- CTSECISSUE: ReflectedXSS -->
-    <%= Request.RawUrl.Substring(5, 19) %>
+    <%= Request.RawUrl.PadRight(24).Substring(5, 19) %>
 
     <!-- CTSECISSUE: ReflectedXSS -->
     <%= Request.Form["Description"] %>
@@ -25,7 +25,7 @@
     <%= Request.Unvalidated.QueryString["Description"] %>
 
     <!-- CTSECISSUE: ReflectedXSS -->
-    <%= Request.Unvalidated.RawUrl.Substring(5, 20) %>
+    <%= Request.Unvalidated.RawUrl.PadRight(25).Substring(5, 20) %>
 
     <!-- CTSECISSUE: ReflectedXSS -->
     <%= Request.Unvalidated.Form["Age"] %>

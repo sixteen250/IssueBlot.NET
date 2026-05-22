@@ -1,5 +1,5 @@
 ﻿<!-- CTSECISSUE:UnsafeTraceDirective -->
-<%@ Page Trace="true" Language="C#" AutoEventWireup="true" CodeBehind="Upload.aspx.cs" Inherits="NETWebFormsBlot.Upload" %>
+<%@ Page Trace="false" Language="C#" AutoEventWireup="true" CodeBehind="Upload.aspx.cs" Inherits="NETWebFormsBlot.Upload" %>
 
 <!DOCTYPE html>
 

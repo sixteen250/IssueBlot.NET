@@ -1,7 +1,7 @@
-﻿<!-- CTSECISSUE:DisabledEventValidation -->
 <%@ Page EnableEventValidation="false" Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="NETWebFormsBlot.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <!-- CTSECISSUE:DisabledEventValidation -->
     <h2><%: Title %>.</h2>
     <h3>Your contact page.</h3>
     <address>
